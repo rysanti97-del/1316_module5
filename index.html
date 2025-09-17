@@ -5,10 +5,10 @@
   <title>SPI Day Planner — South Padre Island</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Fonts (ampersands escaped) -->
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Pacifico&amp;display=swap" rel="stylesheet">
 
-  <!-- External CSS -->
+
   <link rel="stylesheet" href="main.css" />
 </head>
 <body id="top">
@@ -28,13 +28,13 @@
       </ul>
     </nav>
 
-    <!-- Welcome & mission -->
+ 
     <section class="intro panel">
       <h2>Welcome</h2>
       <p><b>Cut through the noise</b> — here’s how to enjoy <i>South Padre Island</i> in <b>half a day or less</b>. This planner gives you clear plans, parking notes, and budget tips so you spend less time scrolling and more time in the sand. 🏖️</p>
     </section>
 
-    <!-- Horizontal cards under welcome -->
+
     <section class="cards-row">
       <h2 class="cards-title">Plan by Activity (Click a Photo)</h2>
 
@@ -59,13 +59,13 @@
       </a>
     </section>
 
-    <!-- Main content -->
+
     <section>
       <div class="left" style="float:none;width:100%;padding-right:0;">
         <section id="itineraries" class="panel">
           <h2>Half-Day Itineraries</h2>
 
-          <!-- Plan Helper (interactive) -->
+      
           <div class="plan-helper" aria-live="polite">
             <label for="planSelect"><b>Plan Helper:</b> Choose a time of day</label>
             <div class="controls">
@@ -77,14 +77,14 @@
               <button id="showPlanBtn" type="button">Show Suggested Plan</button>
             </div>
 
-            <!-- Summary bar (blue) -->
+          
             <p id="planSummary" class="summary" tabindex="0" aria-live="polite"></p>
           </div>
 
-          <!-- Rendered details go here -->
+        
           <div id="planDetails" class="plans" aria-live="polite"></div>
 
-          <!-- Optional no-JS fallback (kept for accessibility) -->
+      
           <noscript>
             <h3>Morning Plan ☀️</h3>
             <ul>
@@ -100,7 +100,7 @@
           <h2>Best Beach Access 🏖️</h2>
           <p>Compare <b>Isla Blanca Park</b>, <b>Andy Bowie Park</b>, and <b>free access points</b> to match your time and budget.</p>
 
-          <!-- Accessible, styled table -->
+         
           <div class="table-wrap">
             <table class="compare" aria-describedby="beachTableCaption">
               <caption id="beachTableCaption">Beach Access Comparison — fees, amenities, and notes</caption>
@@ -157,7 +157,7 @@
             <li><b>Why it’s great:</b> Kids/students love the <i>hands-on learning</i> and <b>cute turtles</b>.</li>
           </ul>
 
-          <!-- Iframe: map embed -->
+     
           <div class="map-embed">
             <iframe
               title="Sea Turtle, Inc. on Google Maps"
@@ -168,7 +168,7 @@
           </div>
         </section>
 
-      <!-- Trip Help (3-up grid) -->
+     
 <section id="trip-help" class="panel trio">
   <div class="trio-grid">
 
@@ -206,8 +206,8 @@
   </div>
 </section>
 		  
-		  </div>        <!-- closes .left -->
-</section>   <!-- closes Main content wrapper -->
+		  </div>        
+</section>   
 
 
     <footer>
@@ -216,20 +216,20 @@
     </footer>
   </div>
 
-  <!-- JavaScript -->
+ 
   <script>
     (function () {
-      // Footer year
+     
       const yearSpan = document.getElementById('year');
       yearSpan.textContent = new Date().getFullYear();
 
-      // Plan helper elements
+    
       const planSelect   = document.getElementById('planSelect');
       const showBtn      = document.getElementById('showPlanBtn');
       const planSummary  = document.getElementById('planSummary');
       const planDetails  = document.getElementById('planDetails');
 
-      // Data for each plan (edit copy here only)
+  
       const PLANS = {
         morning: {
           title: "Morning Plan ☀️",
@@ -270,10 +270,10 @@
         const plan = PLANS[key];
         if (!plan) return;
 
-        // Summary bar text
+      
         planSummary.textContent = plan.summary;
 
-        // Detailed section
+    
         const html = `
           <article class="plan" data-plan="${key}">
             <h3>${plan.title}</h3>
@@ -285,17 +285,17 @@
         `;
         planDetails.innerHTML = html;
 
-        // focus & optional smooth scroll
+       
         planSummary.setAttribute('tabindex','0');
         planSummary.focus();
         if (scroll) planDetails.scrollIntoView({behavior:"smooth", block:"start"});
       }
 
-      // Events
+ 
       showBtn.addEventListener("click", () => renderPlan(planSelect.value, {scroll:true}));
       planSelect.addEventListener("change", () => renderPlan(planSelect.value));
 
-      // Deep link support: #plan=morning|afternoon|sunset
+     
       (function initFromHash(){
         const m = location.hash.match(/plan=(morning|afternoon|sunset)/i);
         const key = m ? m[1].toLowerCase() : "morning";
